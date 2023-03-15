@@ -33,16 +33,26 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         let client = HTTPClientSpy()
         let _ = RemoteAstronomyLoader(url: url, client: client)
         
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+    
+    func test_load_requestsDataFromURL() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        let sut = RemoteAstronomyLoader(url: url, client: client)
+        
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [url])
     }
     
     // MARK: - Helpers
     
     private final class HTTPClientSpy: HTTPClient {
-        var requestedURL: URL?
+        var requestedURLs: [URL] = []
         
         func get(from url: URL) {
-            requestedURL = url
+            requestedURLs.append(url)
         }
     }
 

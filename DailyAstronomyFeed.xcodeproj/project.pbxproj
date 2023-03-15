@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DB4846EA29C17AC40053A7EC /* DailyAstronomyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */; };
 		DB4846EF29C17AC40053A7EC /* DailyAstronomyFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4846EE29C17AC40053A7EC /* DailyAstronomyFeedTests.swift */; };
-		DB4846F029C17AC40053A7EC /* DailyAstronomyFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = DB4846E429C17AC40053A7EC /* DailyAstronomyFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DailyAstronomyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB4846E429C17AC40053A7EC /* DailyAstronomyFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyAstronomyFeed.h; sourceTree = "<group>"; };
 		DB4846E929C17AC40053A7EC /* DailyAstronomyFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyAstronomyFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4846EE29C17AC40053A7EC /* DailyAstronomyFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAstronomyFeedTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +67,6 @@
 		DB4846E329C17AC40053A7EC /* DailyAstronomyFeed */ = {
 			isa = PBXGroup;
 			children = (
-				DB4846E429C17AC40053A7EC /* DailyAstronomyFeed.h */,
 			);
 			path = DailyAstronomyFeed;
 			sourceTree = "<group>";
@@ -89,7 +86,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB4846F029C17AC40053A7EC /* DailyAstronomyFeed.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

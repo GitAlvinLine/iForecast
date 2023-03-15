@@ -29,15 +29,13 @@ protocol HTTPClient {
 final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
-        let client = HTTPClientSpy()
-        let _ = RemoteAstronomyLoader(url: anyURL(), client: client)
+        let (_, client) = makeSUT(url: anyURL())
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestsDataFromURL() {
-        let client = HTTPClientSpy()
-        let sut = RemoteAstronomyLoader(url: anyURL(), client: client)
+        let (sut, client) = makeSUT(url: anyURL())
         
         sut.load()
         
@@ -45,8 +43,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     }
     
     func test_loadTwice_requestsDataFromURLTwice() {
-        let client = HTTPClientSpy()
-        let sut = RemoteAstronomyLoader(url: anyURL(), client: client)
+        let (sut, client) = makeSUT(url: anyURL())
         
         sut.load()
         sut.load()
@@ -55,6 +52,12 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!) -> (sut: RemoteAstronomyLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = RemoteAstronomyLoader(url: url, client: client)
+        return (sut, client)
+    }
     
     private final class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []

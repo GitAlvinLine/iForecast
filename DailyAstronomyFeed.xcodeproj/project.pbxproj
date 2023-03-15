@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DB4846EA29C17AC40053A7EC /* DailyAstronomyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */; };
-		DB4846EF29C17AC40053A7EC /* DailyAstronomyFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4846EE29C17AC40053A7EC /* DailyAstronomyFeedTests.swift */; };
 		DB4846FA29C17B290053A7EC /* DailyAstronomyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4846F929C17B290053A7EC /* DailyAstronomyLoader.swift */; };
 		DB4846FC29C17CFF0053A7EC /* AstronomyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4846FB29C17CFF0053A7EC /* AstronomyItem.swift */; };
+		DB4846FE29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +26,9 @@
 /* Begin PBXFileReference section */
 		DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DailyAstronomyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4846E929C17AC40053A7EC /* DailyAstronomyFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyAstronomyFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB4846EE29C17AC40053A7EC /* DailyAstronomyFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAstronomyFeedTests.swift; sourceTree = "<group>"; };
 		DB4846F929C17B290053A7EC /* DailyAstronomyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAstronomyLoader.swift; sourceTree = "<group>"; };
 		DB4846FB29C17CFF0053A7EC /* AstronomyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyItem.swift; sourceTree = "<group>"; };
+		DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyAstronomyItemFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 		DB4846ED29C17AC40053A7EC /* DailyAstronomyFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				DB4846EE29C17AC40053A7EC /* DailyAstronomyFeedTests.swift */,
+				DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */,
 			);
 			path = DailyAstronomyFeedTests;
 			sourceTree = "<group>";
@@ -150,6 +150,7 @@
 					};
 					DB4846E829C17AC40053A7EC = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -203,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB4846EF29C17AC40053A7EC /* DailyAstronomyFeedTests.swift in Sources */,
+				DB4846FE29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,14 +401,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25BK2A3LZ7;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlvinEscobar.DailyAstronomyFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -416,10 +424,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25BK2A3LZ7;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlvinEscobar.DailyAstronomyFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

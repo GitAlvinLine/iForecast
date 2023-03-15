@@ -27,34 +27,31 @@ protocol HTTPClient {
 }
 
 final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
-
+    
     func test_init_doesNotRequestDataFromURL() {
-        let url = URL(string: "https://any-url.com")!
         let client = HTTPClientSpy()
-        let _ = RemoteAstronomyLoader(url: url, client: client)
+        let _ = RemoteAstronomyLoader(url: anyURL(), client: client)
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestsDataFromURL() {
-        let url = URL(string: "https://any-url.com")!
         let client = HTTPClientSpy()
-        let sut = RemoteAstronomyLoader(url: url, client: client)
+        let sut = RemoteAstronomyLoader(url: anyURL(), client: client)
         
         sut.load()
         
-        XCTAssertEqual(client.requestedURLs, [url])
+        XCTAssertEqual(client.requestedURLs, [anyURL()])
     }
     
     func test_loadTwice_requestsDataFromURLTwice() {
-        let url = URL(string: "https://any-url.com")!
         let client = HTTPClientSpy()
-        let sut = RemoteAstronomyLoader(url: url, client: client)
+        let sut = RemoteAstronomyLoader(url: anyURL(), client: client)
         
         sut.load()
         sut.load()
         
-        XCTAssertEqual(client.requestedURLs, [url, url])
+        XCTAssertEqual(client.requestedURLs, [anyURL(), anyURL()])
     }
     
     // MARK: - Helpers
@@ -65,6 +62,10 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         func get(from url: URL) {
             requestedURLs.append(url)
         }
+    }
+    
+    private func anyURL() -> URL {
+        return URL(string: "https://any-url.com")!
     }
 
 }

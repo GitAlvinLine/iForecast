@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AstronomyItem {
+public struct AstronomyItem {
     let copyright: String
     let date: String
     let explanation: String

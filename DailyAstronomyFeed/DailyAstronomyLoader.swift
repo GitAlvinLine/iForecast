@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum DailyAstronomyResult {
+public enum DailyAstronomyResult {
     case success(AstronomyItem)
     case failure(Error)
 }
 
-protocol DailyAstronomyLoader {
+public protocol DailyAstronomyLoader {
     func load(completion: @escaping (DailyAstronomyResult) -> Void)
 }

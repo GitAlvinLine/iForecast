@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AstronomyItem {
+public struct AstronomyItem: Equatable {
     let copyright: String
     let date: String
     let explanation: String

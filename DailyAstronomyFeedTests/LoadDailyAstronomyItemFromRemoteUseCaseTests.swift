@@ -72,12 +72,12 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     }
     
     private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWithError error: RemoteDailyAstronomyLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        var capturedErrors = [RemoteDailyAstronomyLoader.Error]()
-        sut.load { capturedErrors.append($0) }
+        var capturedResults = [RemoteDailyAstronomyLoader.Result]()
+        sut.load { capturedResults.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedErrors, [error], file: file, line: line)
+        XCTAssertEqual(capturedResults, [.failure(error)], file: file, line: line)
     }
     
     private final class HTTPClientSpy: HTTPClient {

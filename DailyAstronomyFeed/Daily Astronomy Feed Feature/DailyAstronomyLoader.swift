@@ -7,11 +7,15 @@
 
 import Foundation
 
-public enum DailyAstronomyResult {
+public enum DailyAstronomyResult<Error: Swift.Error> {
     case success(AstronomyItem)
     case failure(Error)
 }
 
+extension DailyAstronomyResult: Equatable where Error: Equatable {}
+
 public protocol DailyAstronomyLoader {
-    func load(completion: @escaping (DailyAstronomyResult) -> Void)
+    associatedtype Error: Swift.Error
+    
+    func load(completion: @escaping (DailyAstronomyResult<Error>) -> Void)
 }

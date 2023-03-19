@@ -16,10 +16,7 @@ public final class RemoteDailyAstronomyLoader {
         case invalidData
     }
     
-    public enum Result: Equatable {
-        case success(AstronomyItem)
-        case failure(Error)
-    }
+    public typealias Result = DailyAstronomyResult<Error>
     
     public init(url: URL, client: HTTPClient) {
         self.url = url

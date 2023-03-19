@@ -79,10 +79,18 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://any-url.com")!) -> (sut: RemoteDailyAstronomyLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteDailyAstronomyLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = RemoteDailyAstronomyLoader(url: url, client: client)
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, client)
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
+        }
     }
     
     private func makeItem(date: String, explanation: String, title: String, imageURL: URL) -> (model: AstronomyItem, json: [String:Any]) {

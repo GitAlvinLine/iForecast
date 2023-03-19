@@ -48,12 +48,18 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
         
-        var capturedErrors = [RemoteDailyAstronomyLoader.Error]()
-        sut.load { capturedErrors.append($0) }
+        let samples = [199, 201, 300, 400, 500]
         
-        client.complete(withStatusCode: 400)
-        
-        XCTAssertEqual(capturedErrors, [.invalidData])
+        samples.enumerated().forEach { index, code in
+            var capturedErrors = [RemoteDailyAstronomyLoader.Error]()
+            sut.load { capturedErrors.append($0) }
+            
+            client.complete(withStatusCode: 400, at: index)
+            
+            XCTAssertEqual(capturedErrors, [.invalidData])
+            
+            capturedErrors = []
+        }
     }
     
     // MARK: - Helpers

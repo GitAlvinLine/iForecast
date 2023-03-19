@@ -20,12 +20,3 @@ public struct AstronomyItem: Equatable {
         self.imageURL = imageURL
     }
 }
-
-extension AstronomyItem: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case date
-        case explanation
-        case title
-        case imageURL = "url"
-    }
-}

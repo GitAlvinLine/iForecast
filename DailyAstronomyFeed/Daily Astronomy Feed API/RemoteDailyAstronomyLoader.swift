@@ -39,8 +39,8 @@ public final class RemoteDailyAstronomyLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if response.statusCode == 200, let astronomyItem = try? JSONDecoder().decode(AstronomyItem.self, from: data) {
-                    completion(.success(astronomyItem))
+                if response.statusCode == 200, let item = try? JSONDecoder().decode(Item.self, from: data) {
+                    completion(.success(item.astronomyItem))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -51,3 +51,16 @@ public final class RemoteDailyAstronomyLoader {
     }
 }
 
+private struct Item: Decodable {
+    public let date: String
+    public let explanation: String
+    public let title: String
+    public let url: URL
+    
+    var astronomyItem: AstronomyItem {
+        return AstronomyItem(date: date,
+                             explanation: explanation,
+                             title: title,
+                             imageURL: url)
+    }
+}

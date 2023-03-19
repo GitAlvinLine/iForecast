@@ -19,7 +19,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_requestsDataFromURL() {
         let (sut, client) = makeSUT(url: anyURL())
         
-        sut.load()
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestedURLs, [anyURL()])
     }
@@ -27,8 +27,8 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_loadTwice_requestsDataFromURLTwice() {
         let (sut, client) = makeSUT(url: anyURL())
         
-        sut.load()
-        sut.load()
+        sut.load() { _ in }
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestedURLs, [anyURL(), anyURL()])
     }

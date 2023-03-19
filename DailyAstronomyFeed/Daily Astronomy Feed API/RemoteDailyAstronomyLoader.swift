@@ -39,8 +39,8 @@ public final class RemoteDailyAstronomyLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if response.statusCode == 200, let item = try? JSONDecoder().decode(Item.self, from: data) {
-                    completion(.success(item.astronomyItem))
+                if let astronomyItem = try? AstronomyItemMapper.map(data,response) {
+                    completion(.success(astronomyItem))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -51,16 +51,29 @@ public final class RemoteDailyAstronomyLoader {
     }
 }
 
-private struct Item: Decodable {
-    public let date: String
-    public let explanation: String
-    public let title: String
-    public let url: URL
+private enum AstronomyItemMapper {
     
-    var astronomyItem: AstronomyItem {
-        return AstronomyItem(date: date,
-                             explanation: explanation,
-                             title: title,
-                             imageURL: url)
+    private struct Item: Decodable {
+        public let date: String
+        public let explanation: String
+        public let title: String
+        public let url: URL
+        
+        var astronomyItem: AstronomyItem {
+            return AstronomyItem(date: date,
+                                 explanation: explanation,
+                                 title: title,
+                                 imageURL: url)
+        }
+    }
+    
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> AstronomyItem {
+        guard response.statusCode == 200 else {
+            throw RemoteDailyAstronomyLoader.Error.invalidData
+        }
+        
+        let item = try JSONDecoder().decode(Item.self, from: data)
+        
+        return item.astronomyItem
     }
 }

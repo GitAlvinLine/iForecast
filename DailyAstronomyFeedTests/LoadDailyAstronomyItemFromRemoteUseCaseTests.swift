@@ -66,21 +66,13 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversAstronomyItemOn200HTTPResponseWithJSONItem() {
         let (sut, client) = makeSUT()
         
-        let item = AstronomyItem(date: "2023-03-18",
+        let (item, json) = makeItem(date: "2023-03-18",
                                  explanation: "Explantion",
                                  title: "Title",
                                  imageURL: URL(string: "https://any-url.com")!)
         
-        let itemJSON = [
-            "date": item.date,
-            "explanation": item.explanation,
-            "title": item.title,
-            "url": item.imageURL.absoluteString
-        ]
-        
         expect(sut, toCompleteWith: .success(item), when: {
-            let json = try! JSONSerialization.data(withJSONObject: itemJSON)
-            client.complete(withStatusCode: 200, data: json)
+            client.complete(withStatusCode: 200, data: makeItemJSON(json))
         })
     }
     
@@ -90,6 +82,23 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteDailyAstronomyLoader(url: url, client: client)
         return (sut, client)
+    }
+    
+    private func makeItem(date: String, explanation: String, title: String, imageURL: URL) -> (model: AstronomyItem, json: [String:Any]) {
+        let item = AstronomyItem(date: date, explanation: explanation, title: title, imageURL: imageURL)
+        
+        let json = [
+            "date": date,
+            "explanation": explanation,
+            "title": title,
+            "url": imageURL.absoluteString
+        ]
+        
+        return (item, json)
+    }
+    
+    private func makeItemJSON(_ item: [String:Any]) -> Data {
+        return try! JSONSerialization.data(withJSONObject: item)
     }
     
     private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWith result: RemoteDailyAstronomyLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {

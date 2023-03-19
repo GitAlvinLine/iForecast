@@ -36,7 +36,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(.connectivity), when: {
+        expect(sut, toCompleteWith: .failure(RemoteDailyAstronomyLoader.Error.connectivity), when: {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         })
@@ -48,7 +48,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         let samples = [199, 201, 300, 400, 500]
         
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWith: .failure(.invalidData), when: {
+            expect(sut, toCompleteWith: .failure(RemoteDailyAstronomyLoader.Error.invalidData), when: {
                 let json = makeItemJSON([:])
                 client.complete(withStatusCode: code, data: json, at: index)
             })
@@ -58,7 +58,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .failure(.invalidData), when: {
+        expect(sut, toCompleteWith: .failure(RemoteDailyAstronomyLoader.Error.invalidData), when: {
             let invalidJSON = Data("invalid json".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
@@ -133,7 +133,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
             case let (.success(receivedItem), .success(expectedItem)):
                 XCTAssertEqual(receivedItem, expectedItem, file: file, line: line)
                 
-            case let (.failure(receivedError), .failure(expectedError)):
+            case let (.failure(receivedError as RemoteDailyAstronomyLoader.Error), .failure(expectedError as RemoteDailyAstronomyLoader.Error)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
                 
             default:

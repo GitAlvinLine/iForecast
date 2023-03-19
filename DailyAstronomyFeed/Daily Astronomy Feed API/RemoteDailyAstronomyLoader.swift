@@ -16,7 +16,7 @@ public final class RemoteDailyAstronomyLoader: DailyAstronomyLoader {
         case invalidData
     }
     
-    public typealias Result = DailyAstronomyResult<Error>
+    public typealias Result = DailyAstronomyResult
     
     public init(url: URL, client: HTTPClient) {
         self.url = url
@@ -31,7 +31,7 @@ public final class RemoteDailyAstronomyLoader: DailyAstronomyLoader {
             case let .success(data, response):
                 completion(AstronomyItemMapper.map(data, from: response))
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }

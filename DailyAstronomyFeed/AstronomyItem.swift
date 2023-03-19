@@ -8,9 +8,24 @@
 import Foundation
 
 public struct AstronomyItem: Equatable {
-    let copyright: String
-    let date: String
-    let explanation: String
-    let imageURL: URL
-    let title: String
+    public let date: String
+    public let explanation: String
+    public let title: String
+    public let imageURL: URL
+    
+    public init(date: String, explanation: String, title: String, imageURL: URL) {
+        self.date = date
+        self.explanation = explanation
+        self.title = title
+        self.imageURL = imageURL
+    }
+}
+
+extension AstronomyItem: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case date
+        case explanation
+        case title
+        case imageURL = "url"
+    }
 }

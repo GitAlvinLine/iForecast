@@ -36,7 +36,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithError: .connectivity, when: {
+        expect(sut, toCompleteWith: .failure(.connectivity), when: {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         })
@@ -48,7 +48,7 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         let samples = [199, 201, 300, 400, 500]
         
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWithError: .invalidData, when: {
+            expect(sut, toCompleteWith: .failure(.invalidData), when: {
                 client.complete(withStatusCode: 400, at: index)
             })
         }
@@ -57,9 +57,30 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithError: .invalidData, when: {
+        expect(sut, toCompleteWith: .failure(.invalidData), when: {
             let invalidJSON = Data("invalid json".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
+        })
+    }
+    
+    func test_load_deliversAstronomyItemOn200HTTPResponseWithJSONItem() {
+        let (sut, client) = makeSUT()
+        
+        let item = AstronomyItem(date: "2023-03-18",
+                                 explanation: "Explantion",
+                                 title: "Title",
+                                 imageURL: URL(string: "https://any-url.com")!)
+        
+        let itemJSON = [
+            "date": item.date,
+            "explanation": item.explanation,
+            "title": item.title,
+            "url": item.imageURL.absoluteString
+        ]
+        
+        expect(sut, toCompleteWith: .success(item), when: {
+            let json = try! JSONSerialization.data(withJSONObject: itemJSON)
+            client.complete(withStatusCode: 200, data: json)
         })
     }
     
@@ -71,13 +92,13 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWithError error: RemoteDailyAstronomyLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWith result: RemoteDailyAstronomyLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         var capturedResults = [RemoteDailyAstronomyLoader.Result]()
         sut.load { capturedResults.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedResults, [.failure(error)], file: file, line: line)
+        XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
     private final class HTTPClientSpy: HTTPClient {

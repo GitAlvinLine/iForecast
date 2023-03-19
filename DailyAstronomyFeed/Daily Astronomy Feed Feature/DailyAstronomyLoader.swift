@@ -12,8 +12,6 @@ public enum DailyAstronomyResult<Error: Swift.Error> {
     case failure(Error)
 }
 
-extension DailyAstronomyResult: Equatable where Error: Equatable {}
-
 public protocol DailyAstronomyLoader {
     associatedtype Error: Swift.Error
     

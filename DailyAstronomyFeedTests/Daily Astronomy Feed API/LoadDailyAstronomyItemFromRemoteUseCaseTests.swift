@@ -124,13 +124,28 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: item)
     }
     
-    private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWith result: RemoteDailyAstronomyLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        var capturedResults = [RemoteDailyAstronomyLoader.Result]()
-        sut.load { capturedResults.append($0) }
+    private func expect(_ sut: RemoteDailyAstronomyLoader, toCompleteWith expectedResult: RemoteDailyAstronomyLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItem), .success(expectedItem)):
+                XCTAssertEqual(receivedItem, expectedItem, file: file, line: line)
+                
+            case let (.failure(receivedError), .failure(expectedError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected result \(expectedResult), but got \(receivedResult) instead.", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
         
         action()
         
-        XCTAssertEqual(capturedResults, [result], file: file, line: line)
+        wait(for: [exp], timeout: 1.0)
     }
     
     private final class HTTPClientSpy: HTTPClient {

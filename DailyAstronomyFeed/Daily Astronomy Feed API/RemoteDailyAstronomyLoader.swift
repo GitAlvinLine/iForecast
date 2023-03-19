@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class RemoteDailyAstronomyLoader {
+public final class RemoteDailyAstronomyLoader: DailyAstronomyLoader {
     private let url: URL
     private let client: HTTPClient
     

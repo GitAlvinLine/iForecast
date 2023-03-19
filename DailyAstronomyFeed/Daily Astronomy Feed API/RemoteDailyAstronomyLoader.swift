@@ -41,32 +41,3 @@ public final class RemoteDailyAstronomyLoader {
         }
     }
 }
-
-private enum AstronomyItemMapper {
-    
-    private struct Item: Decodable {
-        public let date: String
-        public let explanation: String
-        public let title: String
-        public let url: URL
-        
-        var astronomyItem: AstronomyItem {
-            return AstronomyItem(date: date,
-                                 explanation: explanation,
-                                 title: title,
-                                 imageURL: url)
-        }
-    }
-    
-    static var OK_200: Int { return 200 }
-    
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> AstronomyItem {
-        guard response.statusCode == OK_200 else {
-            throw RemoteDailyAstronomyLoader.Error.invalidData
-        }
-        
-        let item = try JSONDecoder().decode(Item.self, from: data)
-        
-        return item.astronomyItem
-    }
-}

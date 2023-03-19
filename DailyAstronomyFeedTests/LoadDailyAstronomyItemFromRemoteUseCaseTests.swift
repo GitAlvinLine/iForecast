@@ -38,10 +38,10 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         
         client.error = NSError(domain: "Test", code: 0)
         
-        var capturedError: RemoteDailyAstronomyLoader.Error?
-        sut.load { error in capturedError = error }
+        var capturedErrors = [RemoteDailyAstronomyLoader.Error]()
+        sut.load { capturedErrors.append($0) }
         
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
     // MARK: - Helpers

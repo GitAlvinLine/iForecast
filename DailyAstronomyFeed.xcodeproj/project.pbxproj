@@ -77,9 +77,8 @@
 		DB4846E329C17AC40053A7EC /* DailyAstronomyFeed */ = {
 			isa = PBXGroup;
 			children = (
+				DB7C6A6529C7C7FB00E2B29E /* Daily Astronomy Feed Feature */,
 				DB7C6A5D29C6799000E2B29E /* Daily Astronomy Feed API */,
-				DB4846FB29C17CFF0053A7EC /* AstronomyItem.swift */,
-				DB4846F929C17B290053A7EC /* DailyAstronomyLoader.swift */,
 			);
 			path = DailyAstronomyFeed;
 			sourceTree = "<group>";
@@ -108,6 +107,15 @@
 				DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */,
 			);
 			path = "Daily Astronomy Feed API";
+			sourceTree = "<group>";
+		};
+		DB7C6A6529C7C7FB00E2B29E /* Daily Astronomy Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DB4846FB29C17CFF0053A7EC /* AstronomyItem.swift */,
+				DB4846F929C17B290053A7EC /* DailyAstronomyLoader.swift */,
+			);
+			path = "Daily Astronomy Feed Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

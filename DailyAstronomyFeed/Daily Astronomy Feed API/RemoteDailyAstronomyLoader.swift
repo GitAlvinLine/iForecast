@@ -30,11 +30,7 @@ public final class RemoteDailyAstronomyLoader {
         client.get(from: url) { result in
             switch result {
             case let .success(data, response):
-                if let astronomyItem = try? AstronomyItemMapper.map(data,response) {
-                    completion(.success(astronomyItem))
-                } else {
-                    completion(.failure(.invalidData))
-                }
+                completion(AstronomyItemMapper.map(data, from: response))
             case .failure:
                 completion(.failure(.connectivity))
             }

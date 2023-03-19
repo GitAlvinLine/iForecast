@@ -25,13 +25,12 @@ internal enum AstronomyItemMapper {
     
     private static var OK_200: Int { return 200 }
     
-    internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> AstronomyItem {
-        guard response.statusCode == OK_200 else {
-            throw RemoteDailyAstronomyLoader.Error.invalidData
+    internal static func map(_ data: Data, from response: HTTPURLResponse) -> RemoteDailyAstronomyLoader.Result {
+        guard response.statusCode == OK_200,
+                let item = try? JSONDecoder().decode(Item.self, from: data) else {
+            return .failure(.invalidData)
         }
         
-        let item = try JSONDecoder().decode(Item.self, from: data)
-        
-        return item.astronomyItem
+        return .success(item.astronomyItem)
     }
 }

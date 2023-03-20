@@ -14,6 +14,7 @@
 		DB7C6A5F29C679C600E2B29E /* RemoteDailyAstronomyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A5E29C679C600E2B29E /* RemoteDailyAstronomyLoader.swift */; };
 		DB7C6A6129C7C26600E2B29E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6029C7C26600E2B29E /* HTTPClient.swift */; };
 		DB7C6A6329C7C29400E2B29E /* AstronomyItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6229C7C29400E2B29E /* AstronomyItemMapper.swift */; };
+		DB7C6A6929C7E42E00E2B29E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		DB7C6A5E29C679C600E2B29E /* RemoteDailyAstronomyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDailyAstronomyLoader.swift; sourceTree = "<group>"; };
 		DB7C6A6029C7C26600E2B29E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		DB7C6A6229C7C29400E2B29E /* AstronomyItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyItemMapper.swift; sourceTree = "<group>"; };
+		DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */,
+				DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Daily Astronomy Feed API";
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4846FE29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift in Sources */,
+				DB7C6A6929C7E42E00E2B29E /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

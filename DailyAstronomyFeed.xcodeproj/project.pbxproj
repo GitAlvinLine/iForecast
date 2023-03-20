@@ -19,6 +19,7 @@
 		DB7C6A6E29C810DA00E2B29E /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6D29C810DA00E2B29E /* URLSessionHTTPClient.swift */; };
 		DB970A7C29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB970A7B29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift */; };
 		DB970A7D29C9066200BCF41F /* DailyAstronomyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */; };
+		DB970A8329C910C500BCF41F /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB970A7C29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift in Sources */,
+				DB970A8329C910C500BCF41F /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

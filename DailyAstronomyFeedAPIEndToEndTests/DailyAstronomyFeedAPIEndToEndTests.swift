@@ -28,10 +28,12 @@ final class DailyAstronomyFeedAPIEndToEndTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func getAstronomyItemResult() -> DailyAstronomyResult? {
+    private func getAstronomyItemResult(file: StaticString = #filePath, line: UInt = #line) -> DailyAstronomyResult? {
         let serverURL = URL(string: "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)")!
         let client = URLSessionHTTPClient()
         let loader = RemoteDailyAstronomyLoader(url: serverURL, client: client)
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(loader, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")
         

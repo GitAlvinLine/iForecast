@@ -17,10 +17,19 @@
 		DB7C6A6929C7E42E00E2B29E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */; };
 		DB7C6A6C29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */; };
 		DB7C6A6E29C810DA00E2B29E /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6D29C810DA00E2B29E /* URLSessionHTTPClient.swift */; };
+		DB970A7C29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB970A7B29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift */; };
+		DB970A7D29C9066200BCF41F /* DailyAstronomyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DB4846EB29C17AC40053A7EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB4846D829C17AC40053A7EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB4846E029C17AC40053A7EC;
+			remoteInfo = DailyAstronomyFeed;
+		};
+		DB970A7E29C9066200BCF41F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB4846D829C17AC40053A7EC /* Project object */;
 			proxyType = 1;
@@ -41,6 +50,8 @@
 		DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		DB7C6A6D29C810DA00E2B29E /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		DB970A7929C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyAstronomyFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB970A7B29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAstronomyFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +70,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB970A7629C9066200BCF41F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB970A7D29C9066200BCF41F /* DailyAstronomyFeed.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +86,7 @@
 			children = (
 				DB4846E329C17AC40053A7EC /* DailyAstronomyFeed */,
 				DB4846ED29C17AC40053A7EC /* DailyAstronomyFeedTests */,
+				DB970A7A29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests */,
 				DB4846E229C17AC40053A7EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +96,7 @@
 			children = (
 				DB4846E129C17AC40053A7EC /* DailyAstronomyFeed.framework */,
 				DB4846E929C17AC40053A7EC /* DailyAstronomyFeedTests.xctest */,
+				DB970A7929C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +156,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		DB970A7A29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB970A7B29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift */,
+			);
+			path = DailyAstronomyFeedAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -184,6 +213,24 @@
 			productReference = DB4846E929C17AC40053A7EC /* DailyAstronomyFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DB970A7829C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB970A8229C9066200BCF41F /* Build configuration list for PBXNativeTarget "DailyAstronomyFeedAPIEndToEndTests" */;
+			buildPhases = (
+				DB970A7529C9066200BCF41F /* Sources */,
+				DB970A7629C9066200BCF41F /* Frameworks */,
+				DB970A7729C9066200BCF41F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB970A7F29C9066200BCF41F /* PBXTargetDependency */,
+			);
+			name = DailyAstronomyFeedAPIEndToEndTests;
+			productName = DailyAstronomyFeedAPIEndToEndTests;
+			productReference = DB970A7929C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,6 +249,9 @@
 						CreatedOnToolsVersion = 14.2;
 						LastSwiftMigration = 1420;
 					};
+					DB970A7829C9066200BCF41F = {
+						CreatedOnToolsVersion = 14.2;
+					};
 				};
 			};
 			buildConfigurationList = DB4846DB29C17AC40053A7EC /* Build configuration list for PBXProject "DailyAstronomyFeed" */;
@@ -219,6 +269,7 @@
 			targets = (
 				DB4846E029C17AC40053A7EC /* DailyAstronomyFeed */,
 				DB4846E829C17AC40053A7EC /* DailyAstronomyFeedTests */,
+				DB970A7829C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +283,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DB4846E729C17AC40053A7EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB970A7729C9066200BCF41F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -264,6 +322,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB970A7529C9066200BCF41F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB970A7C29C9066200BCF41F /* DailyAstronomyFeedAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -271,6 +337,11 @@
 			isa = PBXTargetDependency;
 			target = DB4846E029C17AC40053A7EC /* DailyAstronomyFeed */;
 			targetProxy = DB4846EB29C17AC40053A7EC /* PBXContainerItemProxy */;
+		};
+		DB970A7F29C9066200BCF41F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB4846E029C17AC40053A7EC /* DailyAstronomyFeed */;
+			targetProxy = DB970A7E29C9066200BCF41F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -498,6 +569,36 @@
 			};
 			name = Release;
 		};
+		DB970A8029C9066200BCF41F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25BK2A3LZ7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlvinEscobar.DailyAstronomyFeedAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DB970A8129C9066200BCF41F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25BK2A3LZ7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlvinEscobar.DailyAstronomyFeedAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -524,6 +625,15 @@
 			buildConfigurations = (
 				DB4846F729C17AC40053A7EC /* Debug */,
 				DB4846F829C17AC40053A7EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB970A8229C9066200BCF41F /* Build configuration list for PBXNativeTarget "DailyAstronomyFeedAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB970A8029C9066200BCF41F /* Debug */,
+				DB970A8129C9066200BCF41F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

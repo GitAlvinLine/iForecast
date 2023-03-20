@@ -15,6 +15,7 @@
 		DB7C6A6129C7C26600E2B29E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6029C7C26600E2B29E /* HTTPClient.swift */; };
 		DB7C6A6329C7C29400E2B29E /* AstronomyItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6229C7C29400E2B29E /* AstronomyItemMapper.swift */; };
 		DB7C6A6929C7E42E00E2B29E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */; };
+		DB7C6A6C29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		DB7C6A6029C7C26600E2B29E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		DB7C6A6229C7C29400E2B29E /* AstronomyItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyItemMapper.swift; sourceTree = "<group>"; };
 		DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		DB7C6A6429C7C73A00E2B29E /* Daily Astronomy Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				DB7C6A6A29C7F7A100E2B29E /* Helpers */,
 				DB4846FD29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift */,
 				DB7C6A6829C7E42E00E2B29E /* URLSessionHTTPClientTests.swift */,
 			);
@@ -119,6 +122,14 @@
 				DB4846F929C17B290053A7EC /* DailyAstronomyLoader.swift */,
 			);
 			path = "Daily Astronomy Feed Feature";
+			sourceTree = "<group>";
+		};
+		DB7C6A6A29C7F7A100E2B29E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DB7C6A6B29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 			files = (
 				DB4846FE29C17E350053A7EC /* LoadDailyAstronomyItemFromRemoteUseCaseTests.swift in Sources */,
 				DB7C6A6929C7E42E00E2B29E /* URLSessionHTTPClientTests.swift in Sources */,
+				DB7C6A6C29C7F7BE00E2B29E /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

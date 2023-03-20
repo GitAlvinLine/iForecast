@@ -105,12 +105,6 @@ final class LoadDailyAstronomyItemFromRemoteUseCaseTests: XCTestCase {
         return .failure(error)
     }
     
-    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
-        }
-    }
-    
     private func makeItem(date: String, explanation: String, title: String, imageURL: URL) -> (model: AstronomyItem, json: [String:Any]) {
         let item = AstronomyItem(date: date, explanation: explanation, title: title, imageURL: imageURL)
         

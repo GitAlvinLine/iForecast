@@ -10,7 +10,7 @@ jobs:
     timeout-minutes: 10
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_14.2.app
